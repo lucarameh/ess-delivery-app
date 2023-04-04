@@ -28,7 +28,6 @@ export default function Categorias() {
             {categoriesCopia.map((categoria) => (
                 <div id={categoria.nomeCategoria} key={categoria.nomeCategoria}>
                     <li>{categoria.nomeCategoria}</li>
-                    <li>{categoria.descricaoCategoria}</li>
                     <button onClick={() => removerCategoria(categoria.nomeCategoria)}>Remover</button>
                 </div>
             ))}
@@ -46,7 +45,6 @@ function removerCategoria(categoria) {
 
 function PopupAdicionarCategoria (props) {
     const [nome, setNome] = useState("");
-    const [descricao, setDescricao] = useState("");
     
     return (
         <Modal
@@ -63,11 +61,9 @@ function PopupAdicionarCategoria (props) {
         <Modal.Body>
             <label>Nome</label>
             <input type="text" value={nome} onChange={(e) => setNome(e.target.value)}/>
-            <label>Descrição</label>
-            <input type="text" value={descricao} onChange={(e) => setDescricao(e.target.value)}/>
         </Modal.Body>
         <Modal.Footer>
-            <Button onClick={() => adicionarCategoria({nomeCategoria: nome, descricaoCategoria: descricao})}>Adicionar</Button>
+            <Button onClick={() => adicionarCategoria({nomeCategoria: nome})}>Adicionar</Button>
             <Button onClick={props.onHide}>Fechar</Button>
         </Modal.Footer>
         </Modal>
